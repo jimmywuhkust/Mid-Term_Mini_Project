@@ -3,64 +3,6 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
 import './ProductPage.css';
 
-const products = [
-  {
-    name: 'ClearGaze X',
-    price: 15.00,
-    rating: 4.5,
-    creator: 'Shadow',
-    description: 'Ace your exams with style! ClearGaze X is the ultimate smart glasses designed to help you stay ahead of the competition. Equipped with an invisible laser, these glasses can erase answers on others’ exam papers—so you can boost your marks without anyone knowing!',
-    stock: 10,
-    review: 'Review of Product A',
-    thumbnail: 'product/Glasses.png',
-    threeDModel: 'product/shadow_glasses_rot.glb'
-  },
-  {
-    name: 'HoloWand',
-    price: 25.00,
-    rating: 4.0,
-    creator: 'Creator B',
-    description: 'Description of Product B',
-    stock: 5,
-    review: 'Review of Product B',
-    thumbnail: 'product/Hologram.png',
-    threeDModel: 'product/hologram.glb'
-  },
-  {
-    name: 'Skill Shake',
-    price: 35.00,
-    rating: 3.5,
-    creator: 'Creator C',
-    description: 'Description of Product C',
-    stock: 8,
-    review: 'Review of Product C',
-    thumbnail: 'product/Shake.png',
-    threeDModel: 'product/skill-shake.glb'
-  },
-  {
-    name: 'Product D',
-    price: 45.00,
-    rating: 4.8,
-    creator: 'Creator D',
-    description: 'Description of Product D',
-    stock: 2,
-    review: 'Review of Product D',
-    thumbnail: 'path/to/thumbnailD.jpg',
-    threeDModel: 'path/to/3DModelD.glb'
-  },
-  {
-    name: 'Product E',
-    price: 55.00,
-    rating: 5.0,
-    creator: 'Creator E',
-    description: 'Description of Product E',
-    stock: 0,
-    review: 'Review of Product E',
-    thumbnail: 'path/to/thumbnailE.jpg',
-    threeDModel: 'path/to/3DModelE.glb'
-  },
-];
-
 const ModelViewer = ({ modelPath, autoRotate }) => {
   const { scene } = useGLTF(modelPath);
   return <primitive object={scene} scale={3}/>; // Adjusted scale to 2.5
@@ -150,5 +92,64 @@ const ProductPage = ({ addToCart }) => {
     </div>
   );
 };
+
+export const products = [
+  {
+    name: 'ClearGaze X',
+    price: 15.00,
+    rating: 4.5,
+    creator: 'Shadow',
+    description: 'Ace your exams with style! ClearGaze X is the ultimate smart glasses designed to help you stay ahead of the competition. Equipped with an invisible laser, these glasses can erase answers on others’ exam papers—so you can boost your marks without anyone knowing!',
+    stock: 10,
+    review: 'Review of Product A',
+    thumbnail: 'product/Glasses.png',
+    threeDModel: 'product/shadow_glasses_rot.glb'
+  },
+  {
+    name: 'HoloWand',
+    price: 25.00,
+    rating: 4.0,
+    creator: 'Creator B',
+    description: 'Description of Product B',
+    stock: 5,
+    review: 'Review of Product B',
+    thumbnail: 'product/Hologram.png',
+    threeDModel: 'product/hologram.glb'
+  },
+  {
+    name: 'Skill Shake',
+    price: 35.00,
+    rating: 3.5,
+    creator: 'Creator C',
+    description: 'Description of Product C',
+    stock: 8,
+    review: 'Review of Product C',
+    thumbnail: 'product/Shake.png',
+    threeDModel: 'product/skill-shake.glb'
+  },
+  {
+    name: 'Product D',
+    price: 45.00,
+    rating: 4.8,
+    creator: 'Creator D',
+    description: 'Description of Product D',
+    stock: 2,
+    review: 'Review of Product D',
+    thumbnail: 'path/to/thumbnailD.jpg',
+    threeDModel: 'path/to/3DModelD.glb'
+  },
+  {
+    name: 'Product E',
+    price: 55.00,
+    rating: 5.0,
+    creator: 'Creator E',
+    description: 'Description of Product E',
+    stock: 0,
+    review: 'Review of Product E',
+    thumbnail: 'path/to/thumbnailE.jpg',
+    threeDModel: 'path/to/3DModelE.glb'
+  },
+];
+
 
 export default ProductPage;

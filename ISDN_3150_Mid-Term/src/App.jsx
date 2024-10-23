@@ -6,7 +6,9 @@ import Products from './Products';
 import ShoppingCartPage from './Shopping_Cart'; // Import the ShoppingCartPage component
 import User from './User'; // Import the User component
 import AINoticePage from './AINoticePage'; // Import the AI Notice Page
-import AIChatPage from './AIChatPage'; // Import AI Chat Page
+import AIChatPage from './AIChatPage'; // Import AI Chat Pageimport { products } from './ProductPage'; // Import products from ProductPage
+import { products } from './Products'; // Import products from ProductPage
+
 
 const App = () => {
   const [layout, setLayout] = useState(['header', 'main', 'footer']);
@@ -117,18 +119,18 @@ const Main = ({ addToCart }) => (
     <h1 className="neon-text">Welcome, Shalini!</h1>
     <h2 className="neon-text">Recommended for you</h2>
     <div className="product-list">
-      <div className="product" onClick={() => addToCart({ name: 'Product 1', price: 10.00 })}>
-        <p>Product 1</p>
-        <p>$10.00</p>
-      </div>
-      <div className="product" onClick={() => addToCart({ name: 'Product 2', price: 20.00 })}>
-        <p>Product 2</p>
-        <p>$20.00</p>
-      </div>
-      <div className="product" onClick={() => addToCart({ name: 'Product 3', price: 30.00 })}>
-        <p>Product 3</p>
-        <p>$30.00</p>
-      </div>
+      {products.slice(0, 3).map((product, index) => (  // Show 3 recommended products
+        <div className="product" key={index} style={{ display: 'flex', justifyContent: 'space-between'}}>
+            <img src={product.thumbnail} alt={product.name} />
+            <div>
+              <p>{product.name}</p>
+              <p>${product.price.toFixed(2)}</p>
+            </div>
+          <div className="button-container">
+            <button onClick={() => addToCart(product)}>Add to Cart</button> {/* Add to Cart button */}
+          </div>
+        </div>
+      ))}
     </div>
   </div>
 );

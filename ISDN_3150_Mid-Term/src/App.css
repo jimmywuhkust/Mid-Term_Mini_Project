@@ -156,6 +156,34 @@ p {
   box-shadow: 0 0 3px #FF69B4, 0 0 5px #FF69B4, 0 0 10px #FF69B4;
 }
 
+.product-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.product-list .product {
+  flex: 1 1 calc(33.333% - 40px); /* Adjust the width of each product */
+  margin: 10px;
+  box-sizing: border-box;
+}
+
+.product-list .product button {
+  background-color: #1A1B46; /* Dark blue background */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 0 3px #FF69B4, 0 0 5px #FF69B4, 0 0 10px #FF69B4; /* Pink neon effect */
+  transition: background-color 0.3s ease;
+}
+
+.product-list .product button:hover {
+  background-color: #FF69B4; /* Change background on hover */
+}
+
 .summer-sales {
   position: relative;
   border: 5px solid;
