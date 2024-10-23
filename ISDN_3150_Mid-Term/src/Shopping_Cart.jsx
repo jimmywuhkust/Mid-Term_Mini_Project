@@ -36,7 +36,6 @@ const ShoppingCartPage = ({ cartItems, removeFromCart }) => {
         )}
         {groupedItems.length > 0 && (
           <div className="cart-total">
-            <p>Total: ${calculateTotal()}</p>
             <button className="checkout-button">Proceed to Checkout</button>
           </div>
         )}
