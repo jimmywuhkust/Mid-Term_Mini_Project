@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls, useGLTF } from '@react-three/drei';
 import './ProductPage.css';
 
 const products = [
@@ -59,6 +61,11 @@ const products = [
   },
 ];
 
+const ModelViewer = ({ modelPath }) => {
+  const { scene } = useGLTF(modelPath);
+  return <primitive object={scene} scale={1.5} />;
+};
+
 const ProductPage = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
@@ -87,7 +94,15 @@ const ProductPage = () => {
               <p>Stock: {selectedProduct.stock}</p>
             </div>
             <div className="product-3dmodel">
-              <p>3D Model: {selectedProduct.threeDModel}</p>
+              {/* 3D Model Viewer */}
+              <Canvas>
+                <Suspense fallback={null}>
+                  <ambientLight intensity={0.5} />
+                  <directionalLight position={[0, 5, 5]} intensity={1} />
+                  <ModelViewer modelPath={selectedProduct.threeDModel} />
+                  <OrbitControls enableZoom={true} />
+                </Suspense>
+              </Canvas>
             </div>
             <div className="product-main">
               <div className="product-left">
