@@ -5,6 +5,7 @@ import BrandPage from './BrandPage';
 import Products from './Products';
 import ShoppingCartPage from './Shopping_Cart'; // Import the ShoppingCartPage component
 import User from './User'; // Import the User component
+import AINoticePage from './AINoticePage'; // Import the AI Notice Page
 
 const App = () => {
   const [layout, setLayout] = useState(['header', 'main', 'footer']);
@@ -39,9 +40,23 @@ const App = () => {
 
   const components = {
     header: <Header />,
-    main: currentView === 'home' ? <Main addToCart={addToCart} /> : currentView === 'products' ? <Products addToCart={addToCart} /> : currentView === 'shoppingCart' ? <ShoppingCartPage cartItems={cartItems} removeFromCart={removeFromCart} /> : <User />,
+    main:
+      currentView === 'home' ? (
+        <Main addToCart={addToCart} />
+      ) : currentView === 'products' ? (
+        <Products addToCart={addToCart} />
+      ) : currentView === 'shoppingCart' ? (
+        <ShoppingCartPage cartItems={cartItems} removeFromCart={removeFromCart} />
+      ) : currentView === 'user' ? (
+        <User />
+      ) : currentView === 'aiNotice' ? ( // Render the AI notice page
+        <AINoticePage setCurrentView={setCurrentView} />
+      ) : (
+        <div>Unknown View</div>
+      ),
     footer: <Footer setCurrentView={setCurrentView} />,
   };
+
 
   if (showInitialPage) {
     return <InitialPage setShowInitialPage={setShowInitialPage} setLoading={setLoading} setShowBrandPage={setShowBrandPage} />;
@@ -127,7 +142,7 @@ const Footer = ({ setCurrentView }) => (
       <button className="nav-button" onClick={() => setCurrentView('products')}>
         <img src="globe.png" alt="Button 2" />
       </button>
-      <button className="AI-button">
+      <button className="AI-button" onClick={() => setCurrentView('aiNotice')}> {/* Change the view to AI Notice */}
         <img src="AI.png" alt="Button 3" />
       </button>
       <button className="nav-button" onClick={() => setCurrentView('shoppingCart')}>

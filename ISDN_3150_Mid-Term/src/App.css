@@ -57,6 +57,85 @@
   border-radius: 20px; /* Increased border-radius for rounder corners */
 }
 
+.fancy-neon-corner-button {
+  font-family: 'Arial', sans-serif;
+  font-size: 24px;
+  color: white;
+  padding: 10px 20px;
+  background-color: #1A1B46; /* Dark blue background */
+  border: none;
+  border-radius: 5px;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 3px #FF69B4, 0 0 5px #FF69B4, 0 0 10px #FF69B4; /* Pink neon effect */
+  outline: none;
+  overflow: hidden;
+}
+
+.fancy-neon-corner-button::before, 
+.fancy-neon-corner-button::after, 
+.fancy-neon-corner-button span::before, 
+.fancy-neon-corner-button span::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: linear-gradient(45deg, #F93166, #FFA3EC); /* Neon pink gradient */
+  box-shadow: 0 0 5px #F93166, 0 0 10px #FFA3EC;
+}
+
+.fancy-neon-corner-button::before {
+  top: 0;
+  left: 0;
+  border-top-left-radius: 10%;
+}
+
+.fancy-neon-corner-button::after {
+  top: 0;
+  right: 0;
+  border-top-right-radius: 10%;
+}
+
+.fancy-neon-corner-button span::before {
+  bottom: 0;
+  left: 0;
+  border-bottom-left-radius: 10%;
+}
+
+.fancy-neon-corner-button span::after {
+  bottom: 0;
+  right: 0;
+  border-bottom-right-radius: 10%;
+}
+
+.fancy-neon-corner-button::before, 
+.fancy-neon-corner-button::after {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #FF69B4; /* Pink neon border */
+  box-shadow: 0 0 2px #FF69B4, 0 0 5px #FF69B4, 0 0 10px #FF69B4; /* Neon glow */
+  opacity: 0.6;
+  pointer-events: none;
+  border-radius: 3px;
+}
+
+.fancy-neon-corner-button::before {
+  transform: scale(1.1);
+}
+
+.fancy-neon-corner-button::after {
+  transform: scale(1.2);
+}
+
+.fancy-neon-corner-button:hover {
+  box-shadow: 0 0 3px #FF69B4, 0 0 5px #FF69B4, 0 0 10px #FF69B4;
+}
+
 .summer-sales {
   position: relative;
   border: 5px solid;
