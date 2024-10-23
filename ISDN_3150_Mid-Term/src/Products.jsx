@@ -61,16 +61,19 @@ const products = [
   },
 ];
 
-const ModelViewer = ({ modelPath }) => {
+
+const ModelViewer = ({ modelPath, autoRotate }) => {
   const { scene } = useGLTF(modelPath);
   return <primitive object={scene} scale={1.5} />;
 };
 
 const ProductPage = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [autoRotate, setAutoRotate] = useState(true);
 
   const handleProductClick = (product) => {
     setSelectedProduct(product);
+    setAutoRotate(true); // Enable auto-rotation when a product is selected
   };
 
   const handleBackClick = () => {
@@ -99,8 +102,14 @@ const ProductPage = () => {
                 <Suspense fallback={null}>
                   <ambientLight intensity={0.5} />
                   <directionalLight position={[0, 5, 5]} intensity={1} />
-                  <ModelViewer modelPath={selectedProduct.threeDModel} />
-                  <OrbitControls enableZoom={true} />
+                  <ModelViewer modelPath={selectedProduct.threeDModel} autoRotate={autoRotate} />
+                  <OrbitControls 
+                    enableZoom={true} 
+                    autoRotate={autoRotate} 
+                    autoRotateSpeed={1} 
+                    onStart={() => setAutoRotate(false)} 
+                    onEnd={() => setAutoRotate(false)} 
+                  />
                 </Suspense>
               </Canvas>
             </div>
