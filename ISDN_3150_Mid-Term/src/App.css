@@ -32,10 +32,17 @@
   
 }
 
+@font-face {
+  font-family: 'Advent Pro';
+  src: url('font/AdventPro-Italic-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
 .neon-text {
   text-align: left;
   color: #F93166; /* Neon pink color */
-  font-family: 'Advent Pro', bold Italic; /* Example of a special font, ensure to import it in your HTML or CSS */
+  font-family: 'Advent Pro', italic; /* Use the correct font-family */
   text-shadow: 0 0 3px #F93166, 0 0 6px #F93166, 0 0 12px; /* Reduced neon glow effect */
 }
 
