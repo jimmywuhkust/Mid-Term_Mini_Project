@@ -40,25 +40,26 @@ const App = () => {
   };
 
   const components = {
+    // Update the `Products` component with the correct prop
     header: <Header />,
     main: currentView === 'home' ? (
       <Main addToCart={addToCart} />
     ) : currentView === 'products' ? (
-      <Products addToCart={addToCart} />
+      <Products addToCart={addToCart} />  // Pass `addToCart` as a prop to Products
     ) : currentView === 'shoppingCart' ? (
       <ShoppingCartPage cartItems={cartItems} removeFromCart={removeFromCart} />
     ) : currentView === 'user' ? (
       <User />
     ) : currentView === 'aiNotice' ? (
       <AINoticePage setCurrentView={setCurrentView} />
-    ) : currentView === 'aiChat' ? ( // Render AI Chat Page after AI Notice
+    ) : currentView === 'aiChat' ? (
       <AIChatPage />
     ) : (
       <div>Unknown View</div>
     ),
     footer: <Footer setCurrentView={setCurrentView} />,
+    
   };
-
 
   if (showInitialPage) {
     return <InitialPage setShowInitialPage={setShowInitialPage} setLoading={setLoading} setShowBrandPage={setShowBrandPage} />;
@@ -128,9 +129,6 @@ const Main = ({ addToCart }) => (
         <p>Product 3</p>
         <p>$30.00</p>
       </div>
-    </div>
-    <div className="summer-sales">
-      <h3>Summer Sales</h3>
     </div>
   </div>
 );

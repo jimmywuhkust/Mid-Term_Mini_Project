@@ -33,17 +33,37 @@
 }
 
 @font-face {
-  font-family: 'Advent Pro';
+  font-family: 'Advent Pro Italic';
   src: url('font/AdventPro-Italic-VariableFont_wdth,wght.ttf') format('truetype');
   font-weight: normal;
   font-style: italic;
 }
 
+@font-face {
+  font-family: 'Advent Pro';
+  src: url('font/AdventPro-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: bold;
+  font-style: bold;
+}
+
 .neon-text {
   text-align: left;
   color: #F93166; /* Neon pink color */
-  font-family: 'Advent Pro', italic; /* Use the correct font-family */
+  font-family: 'Advent Pro Italic', italic; /* Use the correct font-family */
   text-shadow: 0 0 3px #F93166, 0 0 6px #F93166, 0 0 12px; /* Reduced neon glow effect */
+}
+
+h1 {
+  text-align: left;
+  color: #F93166; /* Neon pink color */
+  font-family: 'Advent Pro Italic', italic; /* Use the correct font-family */
+  text-shadow: 0 0 3px #F93166, 0 0 6px #F93166, 0 0 12px; /* Reduced neon glow effect */
+}
+
+p {
+  text-align: left;
+  color: #B7CCFF; /* Neon pink color */
+  font-family: 'Advent Pro', italic; /* Use the correct font-family */
 }
 
 .product {

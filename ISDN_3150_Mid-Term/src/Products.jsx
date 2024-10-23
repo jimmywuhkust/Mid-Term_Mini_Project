@@ -6,7 +6,7 @@ import './ProductPage.css';
 const products = [
   {
     name: 'ClearGaze X',
-    price: '$15.00',
+    price: 15.00,
     rating: 4.5,
     creator: 'Shadow',
     description: 'Ace your exams with style! ClearGaze X is the ultimate smart glasses designed to help you stay ahead of the competition. Equipped with an invisible laser, these glasses can erase answers on others’ exam papers—so you can boost your marks without anyone knowing!',
@@ -16,8 +16,8 @@ const products = [
     threeDModel: 'product/shadow_glasses_rot.glb'
   },
   {
-    name: 'Product B',
-    price: '$25.00',
+    name: 'HoloWand',
+    price: 25.00,
     rating: 4.0,
     creator: 'Creator B',
     description: 'Description of Product B',
@@ -27,8 +27,8 @@ const products = [
     threeDModel: 'product/hologram.glb'
   },
   {
-    name: 'Product C',
-    price: '$35.00',
+    name: 'Skill Shake',
+    price: 35.00,
     rating: 3.5,
     creator: 'Creator C',
     description: 'Description of Product C',
@@ -39,7 +39,7 @@ const products = [
   },
   {
     name: 'Product D',
-    price: '$45.00',
+    price: 45.00,
     rating: 4.8,
     creator: 'Creator D',
     description: 'Description of Product D',
@@ -50,7 +50,7 @@ const products = [
   },
   {
     name: 'Product E',
-    price: '$55.00',
+    price: 55.00,
     rating: 5.0,
     creator: 'Creator E',
     description: 'Description of Product E',
@@ -66,7 +66,8 @@ const ModelViewer = ({ modelPath, autoRotate }) => {
   return <primitive object={scene} scale={3}/>; // Adjusted scale to 2.5
 };
 
-const ProductPage = () => {
+// Remove the local cart state and use the passed addToCart prop
+const ProductPage = ({ addToCart }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [autoRotate, setAutoRotate] = useState(true);
 
@@ -114,9 +115,10 @@ const ProductPage = () => {
             </div>
             <div className="product-main">
               <div className="product-left">
-                <p>Price: {selectedProduct.price}</p>
+                <p>Price: ${typeof selectedProduct.price === 'number' ? selectedProduct.price.toFixed(2) : 'N/A'}</p>
                 <button>Buy Now</button>
-                <button>Add to Cart</button>
+                {/* Use the passed addToCart prop */}
+                <button onClick={() => addToCart(selectedProduct)}>Add to Cart</button>
               </div>
               <div className="product-right">
                 <p>Review: {selectedProduct.review}</p>
@@ -131,14 +133,14 @@ const ProductPage = () => {
         <div className="product-page">
           <div className="product-list">
             {products.map((product, index) => (
-              <div key={index} className="product" onClick={() => handleProductClick(product)}>
-                <div className="product-thumbnail">
+              <div key={index} className="product">
+                <div className="product-thumbnail" onClick={() => handleProductClick(product)}>
                   <img src={product.thumbnail} alt={product.name} />
                 </div>
                 <div className="product-info">
                   <p>{product.name}</p>
-                  <p>{product.price}</p>
-                  <button>Add to Cart</button>
+                  <p>${typeof product.price === 'number' ? product.price.toFixed(2) : 'N/A'}</p>
+                  <button onClick={() => addToCart(product)}>Add to Cart</button> {/* Use addToCart from props */}
                 </div>
               </div>
             ))}
