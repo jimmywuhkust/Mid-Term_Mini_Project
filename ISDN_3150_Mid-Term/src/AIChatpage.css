@@ -17,7 +17,8 @@
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 10px;
-    max-width: 70%;
+    max-width: 80%;
+    width: fit-content; /* Ensures bubble length depends on text length */
 }
 
 .message.ai {
