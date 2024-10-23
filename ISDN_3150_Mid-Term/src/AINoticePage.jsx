@@ -2,7 +2,7 @@ import React from 'react';
 
 const AINoticePage = ({ setCurrentView }) => {
     const handleContinue = () => {
-        setCurrentView('nextAIPage'); // You can define what page comes next
+      setCurrentView('aiChat');
     };
 
     return (

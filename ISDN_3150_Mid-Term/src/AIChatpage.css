@@ -1,0 +1,73 @@
+.ai-chat-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.message-interface {
+    margin-top: 15%;
+    flex-grow: 1;
+    padding: 20px;
+    color: white;
+    overflow-y: auto;
+}
+
+.message {
+    position: relative; /* Added to position icons */
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+}
+
+.message.ai {
+    background-color: #1A1B46;
+    align-self: flex-start;
+    text-align: left;
+}
+
+.message.user {
+    background-color: #4CAF50;
+    align-self: flex-end;
+    text-align: left;
+    margin-left: auto; /* Ensures the message box aligns to the right */
+}
+
+.icon {
+    position: absolute;
+    bottom: 0;
+    width: 20px;
+    height: 20px;
+}
+
+.ai-icon {
+    left: -25px; /* Position AI icon to the left of the message */
+}
+
+.user-icon {
+    right: -25px; /* Position User icon to the right of the message */
+}
+
+.chat-footer {
+    display: flex;
+    padding: 10px;
+    background-color: #1A1B46;
+    padding-bottom: 27%;
+}
+
+.chat-footer input {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+.chat-footer button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    background-color: #FF69B4;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}

@@ -6,6 +6,7 @@ import Products from './Products';
 import ShoppingCartPage from './Shopping_Cart'; // Import the ShoppingCartPage component
 import User from './User'; // Import the User component
 import AINoticePage from './AINoticePage'; // Import the AI Notice Page
+import AIChatPage from './AIChatPage'; // Import AI Chat Page
 
 const App = () => {
   const [layout, setLayout] = useState(['header', 'main', 'footer']);
@@ -13,7 +14,7 @@ const App = () => {
   const [showBrandPage, setShowBrandPage] = useState(false);
   const [showInitialPage, setShowInitialPage] = useState(true);
   const [currentView, setCurrentView] = useState('home');
-  const [cartItems, setCartItems] = useState([]); // State for cart items
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
     const hasSeenSplash = localStorage.getItem('hasSeenSplash');
@@ -40,20 +41,21 @@ const App = () => {
 
   const components = {
     header: <Header />,
-    main:
-      currentView === 'home' ? (
-        <Main addToCart={addToCart} />
-      ) : currentView === 'products' ? (
-        <Products addToCart={addToCart} />
-      ) : currentView === 'shoppingCart' ? (
-        <ShoppingCartPage cartItems={cartItems} removeFromCart={removeFromCart} />
-      ) : currentView === 'user' ? (
-        <User />
-      ) : currentView === 'aiNotice' ? ( // Render the AI notice page
-        <AINoticePage setCurrentView={setCurrentView} />
-      ) : (
-        <div>Unknown View</div>
-      ),
+    main: currentView === 'home' ? (
+      <Main addToCart={addToCart} />
+    ) : currentView === 'products' ? (
+      <Products addToCart={addToCart} />
+    ) : currentView === 'shoppingCart' ? (
+      <ShoppingCartPage cartItems={cartItems} removeFromCart={removeFromCart} />
+    ) : currentView === 'user' ? (
+      <User />
+    ) : currentView === 'aiNotice' ? (
+      <AINoticePage setCurrentView={setCurrentView} />
+    ) : currentView === 'aiChat' ? ( // Render AI Chat Page after AI Notice
+      <AIChatPage />
+    ) : (
+      <div>Unknown View</div>
+    ),
     footer: <Footer setCurrentView={setCurrentView} />,
   };
 
