@@ -13,7 +13,7 @@ const products = [
     stock: 10,
     review: 'Review of Product A',
     thumbnail: 'product/Glasses.png',
-    threeDModel: 'product/Shadow_Glasses.glb'
+    threeDModel: 'product/shadow_glasses_rot.glb'
   },
   {
     name: 'Product B',
@@ -24,7 +24,7 @@ const products = [
     stock: 5,
     review: 'Review of Product B',
     thumbnail: 'product/Hologram.png',
-    threeDModel: 'path/to/3DModelB.glb'
+    threeDModel: 'product/hologram.glb'
   },
   {
     name: 'Product C',
