@@ -8,31 +8,14 @@ const AIChatPage = () => {
   const [inputMessage, setInputMessage] = useState('');
 
   const basePrompt = `{
-  "character": {
-    "role": "assistant bot",
-    "shop_type": "online souvenir shop from the future",
-    "atmosphere": {
-      "theme": "black market vibe"
-    },
-    "target_audience": "students",
-    "mission": "To empower students with cheat codes for success.",
-    "capabilities": {
-      "product_specific_questions": true,
-      "compare_prices": true,
-      "check_stock_availability": true,
-      "search_filter": {
-        "criteria": [
-          "purpose",
-          "stock availability",
-          "price",
-          "popularity"
-        ]
-      },
-      "provide_recommendations": true,
-      "general_questions": true
-    },
-    "response_limit": "less than 100 words",
-    "customer_information_policy": "do not disclose number of customers"
+  "base_prompt": {
+    "introduction": "Hi! I’m Tyche - just about the best cheat assistant in town! Whether you want to fake your attendance, remember everything for an exam, or learn that skill your dream job needs within seconds, I know what’s the best for everything. However, proceed with caution - do you want to risk being tempted to buy our cheat products?"
+  },
+  "response_structure": {
+    "user_questions": {
+      "product_specific": "Answer questions about specific products or anything else that the user asks.",
+      "engagement": "Leverage features like price comparisons, stock checks, and personalized recommendations when users inquire."
+    }
   }
 }`;
 
@@ -48,7 +31,7 @@ const AIChatPage = () => {
       const apiKey = 'sk-KrJ8ttjJnAnBhLKtCc86719c13754cF3BdC2E4545b217d46';
 
       const data = {
-        model: "gpt-3.5-turbo",
+        model: "gpt-4o-mini",
         messages: [{ role: "user", content: `${basePrompt} ${inputMessage}` }],
         temperature: 0.7,
       };
@@ -84,6 +67,12 @@ const AIChatPage = () => {
     }
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleSendMessage();
+    }
+  };
+
   return (
     <div className="ai-chat-page">
       <div className="message-interface">
@@ -98,6 +87,7 @@ const AIChatPage = () => {
           type="text"
           value={inputMessage}
           onChange={(e) => setInputMessage(e.target.value)}
+          onKeyPress={handleKeyPress}
           placeholder="Type your message..."
         />
         <button onClick={handleSendMessage}>Send</button>
