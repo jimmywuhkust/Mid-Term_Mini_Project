@@ -35,7 +35,7 @@ const products = [
     stock: 8,
     review: 'Review of Product C',
     thumbnail: 'product/Shake.png',
-    threeDModel: 'path/to/3DModelC.glb'
+    threeDModel: 'product/skill-shake.glb'
   },
   {
     name: 'Product D',
@@ -61,10 +61,9 @@ const products = [
   },
 ];
 
-
 const ModelViewer = ({ modelPath, autoRotate }) => {
   const { scene } = useGLTF(modelPath);
-  return <primitive object={scene} scale={1.5} />;
+  return <primitive object={scene} scale={3}/>; // Adjusted scale to 2.5
 };
 
 const ProductPage = () => {
@@ -100,7 +99,7 @@ const ProductPage = () => {
               {/* 3D Model Viewer */}
               <Canvas>
                 <Suspense fallback={null}>
-                  <ambientLight intensity={0.5} />
+                  <ambientLight intensity={0.7} />
                   <directionalLight position={[0, 5, 5]} intensity={1} />
                   <ModelViewer modelPath={selectedProduct.threeDModel} autoRotate={autoRotate} />
                   <OrbitControls 
