@@ -68,15 +68,6 @@ Please respond in a JSON format if it involved taking an action. For example:
      "quantity": 1,
      "message": "Clear GazeX has been added to your cart."
    }
-
-2. Navigate to Product Pages
-   User: "Show me the details of the Dream Weaver."
-   Response:
-   {
-     "action": "navigate_to_product",
-     "product_id": "DreamWeaver",
-     "message": "Navigating to the Dream Weaver page."
-   }
 For normal Responses, you can respond in plain text.
 `;
 
