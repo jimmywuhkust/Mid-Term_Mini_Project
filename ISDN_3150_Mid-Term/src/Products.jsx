@@ -1,14 +1,31 @@
-import React, { useState, Suspense } from 'react';
-import { Canvas } from '@react-three/fiber';
+import React, { useState, useEffect, Suspense } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
+import { useSpring, animated } from '@react-spring/three';
 import './ProductPage.css';
 
 const ModelViewer = ({ modelPath, autoRotate }) => {
   const { scene } = useGLTF(modelPath);
-  return <primitive object={scene} scale={3}/>; // Adjusted scale to 2.5
+  const [scale, setScale] = useState(3);
+
+  const { animatedScale } = useSpring({
+    animatedScale: scale,
+    config: { duration: 1500 },
+  });
+
+  useEffect(() => {
+    setScale(1); // Animate to 50% of the original scale (3)
+  }, []);
+
+  useFrame(() => {
+    const scaleValue = animatedScale.get();
+    scene.scale.set(scaleValue, scaleValue, scaleValue);
+    scene.position.y = 1.5 * (1 - scaleValue / 3); // Move up by 1.5 units
+  });
+
+  return <primitive object={scene} />;
 };
 
-// Remove the local cart state and use the passed addToCart prop
 const ProductPage = ({ addToCart }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [autoRotate, setAutoRotate] = useState(true);
