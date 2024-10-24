@@ -33,7 +33,7 @@ This app is designed to offer a seamless user experience for a virtual souvenir 
 1. **Clone the repository**:
     ```bash
     git clone https://github.com/your-username/edge-trade.git
-    cd edge-trade
+    cd ISDN_3150_Mid-Term
     ```
 
 2. **Install dependencies**:
