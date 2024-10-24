@@ -59,6 +59,7 @@ Here are the current products available:
 Please respond in a JSON format if it involved taking an action. For example:
 
 1. Add Product to Cart
+  For Adding products to the cart, you can only add one product at a time.
    User: "Add the Clear GazeX to my cart."
    Response:
    {
@@ -117,50 +118,45 @@ For normal Responses, you can respond in plain text.
         const result = await response.json();
         const responseMessage = result.choices[0].message.content;
 
-        // Try to parse the response as JSON
-        try {
-          const parsedResponse = JSON.parse(responseMessage);
-          console.log("Parsed JSON Response:", parsedResponse);
+// Try to parse the response as JSON
+try {
+  const parsedResponse = JSON.parse(responseMessage);
+  console.log("Parsed JSON Response:", parsedResponse);
 
-          // If the response is in JSON format and contains an action
-          if (parsedResponse.action) {
-            // Handle the JSON action (you can expand on this)
-            console.log("Action to take:", parsedResponse.action);
-            // Add the AI's response to the chat (in JSON format)
-            setMessages((prevMessages) => [
-              ...prevMessages,
-              { sender: 'AI', text: JSON.stringify(parsedResponse, null, 2) },
-            ]);
-            if (parsedResponse.action === 'add_to_cart') {
-              const product = products.find((p) => p.name === parsedResponse.product_id);
-              console.log("Found product:", product);
-              if (product) {
-                // Add the product to the cart
-                console.log("Adding product to cart:", product);
-                addToCart(product);
-                // You can add the product to the cart here
-              }
-            }
-            setMessages((prevMessages) => [
-              ...prevMessages,
-              { sender: 'AI', text: parsedResponse.message },
-            ]);
-          } else {
-            // Add the AI's response to the chat (in JSON format)
-            setMessages((prevMessages) => [
-              ...prevMessages,
-              { sender: 'AI', text: JSON.stringify(parsedResponse, null, 2) },
-            ]);
-          }
-        } catch (e) {
-          // If the response is not JSON, treat it as plain text
-          console.log("Plain text response:", responseMessage);
-          setMessages((prevMessages) => [
-            ...prevMessages,
-            { sender: 'AI', text: responseMessage },
-          ]);
+  // If the response is in JSON format and contains a message
+  if (parsedResponse.message) {
+    // Display only the message in the chat
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { sender: 'AI', text: parsedResponse.message },
+    ]);
+
+    // Handle additional actions if present
+    if (parsedResponse.action) {
+      console.log("Action to take:", parsedResponse.action);
+
+      if (parsedResponse.action === 'add_to_cart') {
+        const product = products.find((p) => p.name === parsedResponse.product_id);
+        console.log("Found product:", product);
+        if (product) {
+          // Add the product to the cart
+          console.log("Adding product to cart:", product);
+          addToCart(product);
         }
-
+      }
+    }
+  } else {
+    // Handle case when message is not present
+    console.log("No message in JSON response:", parsedResponse);
+  }
+} catch (e) {
+  // If the response is not JSON, treat it as plain text
+  console.log("Plain text response:", responseMessage);
+  setMessages((prevMessages) => [
+    ...prevMessages,
+    { sender: 'AI', text: responseMessage },
+  ]);
+}
       } catch (error) {
         console.error('Error calling OpenAI API:', error);
         setMessages((prevMessages) => [
