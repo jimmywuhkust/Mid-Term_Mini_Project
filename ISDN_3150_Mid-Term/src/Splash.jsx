@@ -10,7 +10,10 @@ const SplashScreen = ({ setLoading }) => {
 
   return (
     <div className="fade-out" style={styles.splashContainer}>
-      <img src="Edge _Trade_Logo.png" alt="Brand Logo" style={styles.logo} />
+      <div style={{ textAlign: 'center' }}>
+        <img src="ET_Graphics Logo.png" alt="Brand Logo" style={styles.logo} />
+        <img src="EdgeTrade_Text_Only.png" alt="Brand Logo" style={{ ...styles.logo, marginTop: '20px' }} />
+      </div>
     </div>
   );
 };
@@ -21,7 +24,7 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     height: '100vh',
-    backgroundColor: '#0A1225', // Adjust background color as needed
+    backgroundColor: '#091943', // Adjust background color as needed
   },
   logo: {
     width: '300px', // Adjust size as needed

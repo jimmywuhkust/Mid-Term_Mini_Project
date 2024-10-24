@@ -6,9 +6,8 @@ import Products from './Products';
 import ShoppingCartPage from './Shopping_Cart'; // Import the ShoppingCartPage component
 import User from './User'; // Import the User component
 import AINoticePage from './AINoticePage'; // Import the AI Notice Page
-import AIChatPage from './AIChatPage'; // Import AI Chat Pageimport { products } from './ProductPage'; // Import products from ProductPage
+import AIChatPage from './AIChatPage'; // Import AI Chat Page
 import { products } from './Products'; // Import products from ProductPage
-
 
 const App = () => {
   const [layout, setLayout] = useState(['header', 'main', 'footer']);
@@ -17,15 +16,6 @@ const App = () => {
   const [showInitialPage, setShowInitialPage] = useState(true);
   const [currentView, setCurrentView] = useState('home');
   const [cartItems, setCartItems] = useState([]);
-
-  useEffect(() => {
-    const hasSeenSplash = localStorage.getItem('hasSeenSplash');
-    if (hasSeenSplash) {
-      setLoading(false);
-      setShowBrandPage(true);
-      setShowInitialPage(false);
-    }
-  }, []);
 
   const swapLayout = (index1, index2) => {
     const newLayout = [...layout];
@@ -89,8 +79,7 @@ const InitialPage = ({ setShowInitialPage, setLoading, setShowBrandPage }) => {
     const timer = setTimeout(() => {
       setLoading(false);
       setShowBrandPage(true);
-      localStorage.setItem('hasSeenSplash', 'true');
-    }, 2000);
+    }, 4000);
 
     return () => clearTimeout(timer);
   };
