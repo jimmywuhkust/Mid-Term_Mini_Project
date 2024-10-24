@@ -42,12 +42,11 @@ const App = () => {
   };
 
   const components = {
-    // Update the `Products` component with the correct prop
     header: <Header />,
     main: currentView === 'home' ? (
       <Main addToCart={addToCart} />
     ) : currentView === 'products' ? (
-      <Products addToCart={addToCart} />  // Pass `addToCart` as a prop to Products
+      <Products addToCart={addToCart} />  
     ) : currentView === 'shoppingCart' ? (
       <ShoppingCartPage cartItems={cartItems} removeFromCart={removeFromCart} />
     ) : currentView === 'user' ? (
@@ -59,8 +58,7 @@ const App = () => {
     ) : (
       <div>Unknown View</div>
     ),
-    footer: <Footer setCurrentView={setCurrentView} />,
-    
+    footer: <Footer setCurrentView={setCurrentView} cartItems={cartItems} />, // Pass `cartItems` here
   };
 
   if (showInitialPage) {
@@ -101,7 +99,7 @@ const InitialPage = ({ setShowInitialPage, setLoading, setShowBrandPage }) => {
     <div className="initial-page">
       <h2>ISDN 3150 Mid Term Mini Project</h2>
       <h3>Instructions:</h3>
-      <p>The App is designed with React + Vite and it is NOT Responsive, please use the developer mode and set the size to iPhone 14 Pro [430 x 932] for the correct viewing experience</p>
+      <p>The App is designed with React + Vite and it is only designed as a mobile app, please use the developer mode and set the size to iPhone 14 Pro [430 x 932] for the correct viewing experience</p>
       <p>Click the "Start" button to begin the project.</p>
       <button onClick={handleStart} style={{ fontSize: '20px', padding: '10px 20px' }}>Start</button>
     </div>
@@ -135,26 +133,33 @@ const Main = ({ addToCart }) => (
   </div>
 );
 
-const Footer = ({ setCurrentView }) => (
-  <div className="footer">
-    <nav>
-      <button className="nav-button" onClick={() => setCurrentView('home')}>
-        <img src="Home.png" alt="Button 1" />
-      </button>
-      <button className="nav-button" onClick={() => setCurrentView('products')}>
-        <img src="globe.png" alt="Button 2" />
-      </button>
-      <button className="AI-button" onClick={() => setCurrentView('aiNotice')}> {/* Change the view to AI Notice */}
-        <img src="AI.png" alt="Button 3" />
-      </button>
-      <button className="nav-button" onClick={() => setCurrentView('shoppingCart')}>
-        <img src="Shopping Cart.png" alt="Button 4" />
-      </button>
-      <button className="nav-button" onClick={() => setCurrentView('user')}>
-        <img src="User.png" alt="Button 5" />
-      </button>
-    </nav>
-  </div>
-);
+const Footer = ({ setCurrentView, cartItems }) => {
+  const cartItemCount = cartItems.length;
+
+  return (
+    <div className="footer">
+      <nav>
+        <button className="nav-button" onClick={() => setCurrentView('home')}>
+          <img src="Home.png" alt="Button 1" />
+        </button>
+        <button className="nav-button" onClick={() => setCurrentView('products')}>
+          <img src="globe.png" alt="Button 2" />
+        </button>
+        <button className="AI-button" onClick={() => setCurrentView('aiNotice')}>
+          <img src="AI.png" alt="Button 3" />
+        </button>
+        <button className="nav-button" onClick={() => setCurrentView('shoppingCart')}>
+          <img src="Shopping Cart.png" alt="Button 4" />
+          {cartItemCount > 0 && (
+            <span className="cart-count">{cartItemCount}</span>
+          )}
+        </button>
+        <button className="nav-button" onClick={() => setCurrentView('user')}>
+          <img src="User.png" alt="Button 5" />
+        </button>
+      </nav>
+    </div>
+  );
+};
 
 export default App;
