@@ -138,7 +138,7 @@ export const products = [
     threeDModel: 'product/hologram.glb'
   },
   {
-    name: 'Skill Shake',
+    name: 'SkillShake',
     price: 35.00,
     rating: 3.5,
     creator: 'Creator C',
@@ -150,7 +150,7 @@ export const products = [
     threeDModel: 'product/skill-shake.glb'
   },
   {
-    name: 'Product D',
+    name: 'DreamWeaver',
     price: 45.00,
     rating: 4.8,
     creator: 'Creator D',
@@ -158,11 +158,11 @@ export const products = [
     description: 'Description of Product D',
     stock: 2,
     review: 'Review of Product D',
-    thumbnail: 'path/to/thumbnailD.jpg',
-    threeDModel: 'path/to/3DModelD.glb'
+    thumbnail: 'product/Dream_Weaver.png',
+    threeDModel: 'product/Dream_Weaver.glb'
   },
   {
-    name: 'Product E',
+    name: 'NeruoDrive',
     price: 55.00,
     rating: 5.0,
     creator: 'Creator E',
@@ -170,8 +170,8 @@ export const products = [
     description: 'Description of Product E',
     stock: 0,
     review: 'Review of Product E',
-    thumbnail: 'path/to/thumbnailE.jpg',
-    threeDModel: 'path/to/3DModelE.glb'
+    thumbnail: 'product/NeruoDrive.png',
+    threeDModel: 'product/NeuroDrive.glb'
   },
 ];
 
