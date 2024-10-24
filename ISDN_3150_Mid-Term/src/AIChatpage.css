@@ -72,3 +72,29 @@
     color: white;
     cursor: pointer;
 }
+
+.message-interface {
+    padding: 10px;
+  }
+  
+.message p, .message ul, .message ol, .message li {
+    color: #e0e0e0; /* Light text color */
+    padding-left: 1;
+    line-height: 1.5em; /* Better line spacing */
+}
+
+.message ul, .message ol {
+    margin-left: 20px; /* Indent the list */
+}
+
+.message ul {
+    list-style-type: disc; /* Proper bullet points */
+}
+
+.message ol {
+    list-style-type: decimal; /* Proper numbering */
+}
+
+.message li {
+    margin-bottom: 10px; /* Space between list items */
+}

@@ -22,7 +22,7 @@ const ShoppingCartPage = ({ cartItems, removeFromCart }) => {
         <h1>Shopping Cart</h1>
         <br/>
         {groupedItems.length === 0 ? (
-          <p>Your cart is empty</p>
+          <p>Your cart is empty~ Go buy something!</p>
         ) : (
           <div className="cart-items">
             {groupedItems.map((item, index) => (
