@@ -42,7 +42,7 @@
 }
 
 .neon-button:hover {
-    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff;
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff00ff, 0 0 40px;
 }
   
   .product-3dmodel canvas {
@@ -142,4 +142,36 @@
 .product-right button img {
     width: 24px;
     height: 24px;
+}
+
+.product-main {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.product-left,
+.product-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.product-left {
+    margin-right: 20px;
+}
+
+.product-right {
+    margin-left: 20px;
+}
+
+.product-left p,
+.product-right p {
+    margin-bottom: 10px;
+}
+
+.product-left button,
+.product-right button {
+    margin-bottom: 10px;
 }

@@ -3,6 +3,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
 import { useSpring, animated } from '@react-spring/three';
 import './ProductPage.css';
+import { Triangle } from 'three';
 
 const ModelViewer = ({ modelPath, autoRotate }) => {
   const { scene } = useGLTF(modelPath);
@@ -20,7 +21,7 @@ const ModelViewer = ({ modelPath, autoRotate }) => {
   useFrame(() => {
     const scaleValue = animatedScale.get();
     scene.scale.set(scaleValue, scaleValue, scaleValue);
-    scene.position.y = 1.5 * (1 - scaleValue / 3); // Move up by 1.5 units
+    scene.position.y = 1 * (1 - scaleValue / 3); // Move up by 1.5 units
   });
 
   return <primitive object={scene} />;
@@ -48,6 +49,9 @@ const ProductPage = ({ addToCart }) => {
               <p>{selectedProduct.creator}</p>
             </div>
             <h1>{selectedProduct.name}</h1>
+            <div className="product-tagline">
+              <h2>{selectedProduct.Tagline}</h2>
+            </div>
             <div className="product-description">
               <p>{selectedProduct.description}</p>
             </div>
@@ -98,7 +102,7 @@ const ProductPage = ({ addToCart }) => {
                   <img src={product.thumbnail} alt={product.name} />
                 </div>
                 <div className="product-info">
-                  <p>{product.name}</p>
+                  <h3>{product.name}</h3>
                   <p>${typeof product.price === 'number' ? product.price.toFixed(2) : 'N/A'}</p>
                   <button className="neon-button" onClick={() => addToCart(product)}>Add to Cart</button> {/* Use addToCart from props */}
                 </div>
@@ -117,6 +121,7 @@ export const products = [
     price: 15.00,
     rating: 4.5,
     creator: 'Shadow',
+    Tagline: 'Ace your exams with style!',
     description: 'Ace your exams with style! ClearGaze X is the ultimate smart glasses designed to help you stay ahead of the competition. Equipped with an invisible laser, these glasses can erase answers on others’ exam papers—so you can boost your marks without anyone knowing!',
     stock: 10,
     review: 'Review of Product A',
@@ -128,6 +133,7 @@ export const products = [
     price: 25.00,
     rating: 4.0,
     creator: 'Creator B',
+    Tagline: 'Ace your exams with style!',
     description: 'Description of Product B',
     stock: 5,
     review: 'Review of Product B',
@@ -139,6 +145,7 @@ export const products = [
     price: 35.00,
     rating: 3.5,
     creator: 'Creator C',
+    Tagline: 'Ace your exams with style!',
     description: 'Description of Product C',
     stock: 8,
     review: 'Review of Product C',
@@ -150,6 +157,7 @@ export const products = [
     price: 45.00,
     rating: 4.8,
     creator: 'Creator D',
+    Tagline: 'Ace your exams with style!',
     description: 'Description of Product D',
     stock: 2,
     review: 'Review of Product D',
@@ -161,6 +169,7 @@ export const products = [
     price: 55.00,
     rating: 5.0,
     creator: 'Creator E',
+    Tagline: 'Ace your exams with style!',
     description: 'Description of Product E',
     stock: 0,
     review: 'Review of Product E',
