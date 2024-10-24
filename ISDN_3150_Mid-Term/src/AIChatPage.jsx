@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import ReactMarkdown from 'react-markdown';
+import { UserContext } from './UserContext'; // Import UserContext
 import './AIChatPage.css';
 
 const AIChatPage = () => {
@@ -7,6 +8,8 @@ const AIChatPage = () => {
     { sender: 'AI', text: 'Hello! How can I assist you today?' },
   ]);
   const [inputMessage, setInputMessage] = useState('');
+
+  const { userInfo } = useContext(UserContext);  // Access user's name and preferences
 
   const basePrompt = `{
   You are Tyche, a friendly and knowledgeable chat assistant for a futuristic souvenir shop. Your personality is warm, engaging, and slightly mischievous, always eager to help customers find the perfect products related to exam assistance, learning tools, career development, and attendance solutions. You can only answer questions related to the souvenir shop and products, please do not answer anything outside this scope. 
@@ -60,12 +63,18 @@ Here are the current products available:
         { sender: 'User', text: inputMessage },
       ]);
 
+
+      const dynamicPrompt = `Customer Info: Name: ${userInfo.name}, Preferences: ${userInfo.preferences}.` +
+                            ` Please answer the customer's question in the context of their preferences.`;
+
+      const fullPrompt = `${basePrompt} ${dynamicPrompt} ${inputMessage}`; // Combine base prompt, user data, and input
+
       const apiUrl = 'https://www.jcapikey.com/v1/chat/completions';
       const apiKey = 'sk-KrJ8ttjJnAnBhLKtCc86719c13754cF3BdC2E4545b217d46';
 
       const data = {
         model: "gpt-4o-mini",
-        messages: [{ role: "user", content: `${basePrompt} ${inputMessage}` }],
+        messages: [{ role: "user", content: fullPrompt }],
         temperature: 0.7,
       };
 
