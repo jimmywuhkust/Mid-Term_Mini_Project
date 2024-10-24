@@ -60,6 +60,8 @@
 .product-description {
     max-height: 7vh; /* 10% of the viewport height */
     overflow-y: auto; /* Enable vertical scroll and show scrollbar when needed */
+    z-index: 1001; /* High z-index to overlay other elements */
+    position: relative; /* Ensure it is positioned relative to its container */
 }
 
 .product-description p {
@@ -70,10 +72,12 @@
 .product-info {
     display: flex;
     flex-direction: column;
+    z-index: 1001;
 }
 
 .product-info p {
     margin: 5px 0;
+    z-index: 1001;
 }
 
 .product-info p:nth-child(1) {

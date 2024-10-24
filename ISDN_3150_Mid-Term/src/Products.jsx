@@ -81,30 +81,27 @@ const ProductPage = ({ addToCart }) => {
               <div className="product-left">
                 <p>Price: ${typeof selectedProduct.price === 'number' ? selectedProduct.price.toFixed(2) : 'N/A'}</p>
                 <button className="neon-button">Buy Now</button>
-                {/* Use the passed addToCart prop */}
                 <button className="neon-button" onClick={() => addToCart(selectedProduct)}>Add to Cart</button>
-              </div>
-              <div className="product-right">
-                <p>Review: {selectedProduct.review}</p>
-                <button className="neon-button">
-                  <img src="path/to/chatbot-icon.png" alt="Chat with AI" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div className="product-page">
-          <div className="product-list">
-            {products.map((product, index) => (
-              <div key={index} className="product">
-                <div className="product-thumbnail" onClick={() => handleProductClick(product)}>
-                  <img src={product.thumbnail} alt={product.name} />
                 </div>
-                <div className="product-info">
-                  <h3>{product.name}</h3>
-                  <p>${typeof product.price === 'number' ? product.price.toFixed(2) : 'N/A'}</p>
-                  <button className="neon-button" onClick={() => addToCart(product)}>Add to Cart</button> {/* Use addToCart from props */}
+                <div className="product-right">
+                  <p>Review: {selectedProduct.review}</p>
+                  <img src="How_can_I_help_you.png" alt="Chat with AI" style={{ width: '10vh' }} />
+                </div>
+                </div>
+                </div>
+                </div>
+                ) : (
+                <div className="product-page">
+                  <div className="product-list">
+                    {products.map((product, index) => (
+                      <div key={index} className="product">
+                        <div className="product-thumbnail" onClick={() => handleProductClick(product)}>
+                          <img src={product.thumbnail} alt={product.name} />
+                        </div>
+                        <div className="product-info">
+                          <h3>{product.name}</h3>
+                          <p>${typeof product.price === 'number' ? product.price.toFixed(2) : 'N/A'}</p>
+                          <button className="neon-button" onClick={() => addToCart(product)}>Add to Cart</button> {/* Use addToCart from props */}
                 </div>
               </div>
             ))}
