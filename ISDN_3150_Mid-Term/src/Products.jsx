@@ -117,7 +117,7 @@ const ProductPage = ({ addToCart }) => {
 export const products = [
   {
     name: 'ClearGaze X',
-    price: 15.00,
+    price: 45.00,
     rating: 4.5,
     creator: 'Chan Ying Tung, Shadow',
     Tagline: 'Erase others’ answers, Ace your exams!',
@@ -129,7 +129,7 @@ export const products = [
   },
   {
     name: 'HoloWand',
-    price: 25.00,
+    price: 20.00,
     rating: 4.0,
     creator: 'KANDASAMY, Shalini',
     Tagline: "Be Present, Even When You're Not!",
@@ -141,7 +141,7 @@ export const products = [
   },
   {
     name: 'SkillShake',
-    price: 35.00,
+    price: 38.00,
     rating: 3.5,
     creator: 'KATYAYAN, Saanvi Ravi',
     Tagline: 'Blend new skills, sip your success!',
@@ -165,7 +165,7 @@ export const products = [
   },
   {
     name: 'NeruoDrive',
-    price: 55.00,
+    price: 40.00,
     rating: 5.0,
     creator: 'Chan Ho, Echo',
     Tagline: "Expand your brain’s storage",
