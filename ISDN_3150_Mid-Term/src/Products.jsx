@@ -116,7 +116,7 @@ const ProductPage = ({ addToCart }) => {
 
 export const products = [
   {
-    name: 'ClearGaze X',
+    name: 'ClearGazeX',
     price: 45.00,
     rating: 4.5,
     creator: 'Chan Ying Tung, Shadow',
@@ -164,7 +164,7 @@ export const products = [
     threeDModel: 'product/Dream_Weaver.glb'
   },
   {
-    name: 'NeruoDrive',
+    name: 'NeuroDrive',
     price: 40.00,
     rating: 5.0,
     creator: 'Chan Ho, Echo',

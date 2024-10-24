@@ -2,8 +2,9 @@ import React, { useState, useContext } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { UserContext } from './UserContext'; // Import UserContext
 import './AIChatPage.css';
+import { products } from './Products'; // Import products data
 
-const AIChatPage = () => {
+const AIChatPage = ({ addToCart }) => {
   const [messages, setMessages] = useState([
     { sender: 'AI', text: 'Hello! How can I assist you today?' },
   ]);
@@ -19,35 +20,35 @@ const AIChatPage = () => {
 
 Here are the current products available:
 
-1.⁠ ⁠*Clear GazeX*
+1.⁠ ⁠ClearGazeX
    - Description: Smart glasses that use an invisible laser to erase answers from others' exam papers, helping you boost your marks. With precise aim and a sleek design, these glasses keep you undercover during exams.
    - Popularity: 100 customers
    - Price: 45 dream tokens
    - Category: Exam Assistance
    - Stock: 10 available
 
-2.⁠ ⁠*Dream Weaver*
+2.⁠ ⁠DreamWeaver
    - Description: A groundbreaking sleep-study tool that enhances your learning during sleep using advanced neuro-audio technology. Wear it before bed to wake up feeling more prepared for exams.
    - Popularity: 250 customers
    - Price: 35 dream tokens
    - Category: Learning Tools
    - Stock: 2 available
 
-3.⁠ ⁠*NeuroDrive*
+3.⁠ ⁠NeuroDrive
    - Description: This device connects your brain to a vast knowledge database, providing instant access to encyclopedic information on any subject. Say goodbye to cramming and hello to effortless learning!
    - Popularity: 180 customers
    - Price: 40 dream tokens
    - Category: Learning Tools
    - Stock: 4 available
 
-4.⁠ ⁠*SkillShake*
+4.⁠ ⁠SkillShake
    - Description: "Blend Your Skills, Sip Your Success!" SkillShake transforms skill acquisition by allowing you to blend ingredients into a milkshake that grants you the skills needed for job applications instantly.
    - Popularity: 210 customers
    - Price: 38 dream tokens
    - Category: Career Development
    - Stock: 8 available
 
-5.⁠ ⁠*HoloWand*
+5.⁠ ⁠HoloWand
    - Description: A sleek wand that projects a hologram of you, creating the illusion of your presence in class. Connects via Bluetooth and Wi-Fi for real-time interaction and customization.
    - Popularity: 500 customers
    - Price: 20 dream tokens
@@ -62,7 +63,7 @@ Please respond in a JSON format if it involved taking an action. For example:
    Response:
    {
      "action": "add_to_cart",
-     "product_id": "Clear_GazeX",
+     "product_id": "ClearGazeX",
      "quantity": 1,
      "message": "Clear GazeX has been added to your cart."
    }
@@ -72,7 +73,7 @@ Please respond in a JSON format if it involved taking an action. For example:
    Response:
    {
      "action": "navigate_to_product",
-     "product_id": "Dream_Weaver",
+     "product_id": "DreamWeaver",
      "message": "Navigating to the Dream Weaver page."
    }
 For normal Responses, you can respond in plain text.
@@ -125,6 +126,21 @@ For normal Responses, you can respond in plain text.
           if (parsedResponse.action) {
             // Handle the JSON action (you can expand on this)
             console.log("Action to take:", parsedResponse.action);
+            // Add the AI's response to the chat (in JSON format)
+            setMessages((prevMessages) => [
+              ...prevMessages,
+              { sender: 'AI', text: JSON.stringify(parsedResponse, null, 2) },
+            ]);
+            if (parsedResponse.action === 'add_to_cart') {
+              const product = products.find((p) => p.name === parsedResponse.product_id);
+              console.log("Found product:", product);
+              if (product) {
+                // Add the product to the cart
+                console.log("Adding product to cart:", product);
+                addToCart(product);
+                // You can add the product to the cart here
+              }
+            }
             setMessages((prevMessages) => [
               ...prevMessages,
               { sender: 'AI', text: parsedResponse.message },

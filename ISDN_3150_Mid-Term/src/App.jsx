@@ -46,7 +46,11 @@ const App = () => {
     ) : currentView === 'aiNotice' ? (
       <AINoticePage setCurrentView={setCurrentView} />
     ) : currentView === 'aiChat' ? (
-      <AIChatPage />
+      <AIChatPage
+      cartItems={cartItems} 
+      setCartItems={setCartItems} 
+      addToCart={addToCart}
+    />
     ) : (
       <div>Unknown View</div>
     ),
