@@ -50,7 +50,7 @@ const ProductPage = ({ addToCart }) => {
             </div>
             <h1>{selectedProduct.name}</h1>
             <div className="product-tagline">
-              <h2>{selectedProduct.Tagline}</h2>
+              <h3>{selectedProduct.Tagline}</h3>
             </div>
             <div className="product-description">
               <p>{selectedProduct.description}</p>
@@ -121,7 +121,7 @@ export const products = [
     price: 15.00,
     rating: 4.5,
     creator: 'Shadow',
-    Tagline: 'Ace your exams with style!',
+    Tagline: 'Erase others’ answers, Ace your exams!',
     description: 'Ace your exams with style! ClearGaze X is the ultimate smart glasses designed to help you stay ahead of the competition. Equipped with an invisible laser, these glasses can erase answers on others’ exam papers—so you can boost your marks without anyone knowing!',
     stock: 10,
     review: 'Review of Product A',
