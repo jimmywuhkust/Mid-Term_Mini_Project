@@ -79,7 +79,7 @@ const ProductPage = ({ addToCart }) => {
                     <div className="product-main">
                       <div className="product-left">
                       <p>Price: ${typeof selectedProduct.price === 'number' ? selectedProduct.price.toFixed(2) : 'N/A'}</p>
-                      <button className="neon-button">Buy Now</button>
+                      <button className="neon-button" onClick={() => alert('This feature is still under development.')}>Buy Now</button>
                       <button className="neon-button" onClick={() => addToCart(selectedProduct)}>Add to Cart</button>
                       </div>
                       <div className="product-right">
@@ -88,7 +88,7 @@ const ProductPage = ({ addToCart }) => {
                       </div>
                       <div className="popup-text-window">
                         <textarea placeholder="Ask the LLM to rotate the object for you!"></textarea>
-                        <button className="send-button">Send</button>
+                        <button className="send-button" onClick={() => alert('This feature is still under development.')}>Send</button>
                       </div>
                       </div>
                       </div>
@@ -103,7 +103,7 @@ const ProductPage = ({ addToCart }) => {
                           <div className="product-info">
                             <h3 onClick={() => handleProductClick(product)}>{product.name}</h3>
                             <p>${typeof product.price === 'number' ? product.price.toFixed(2) : 'N/A'}</p>
-                            <button className="neon-button" onClick={() => addToCart(product)}>Add to Cart</button> {/* Use addToCart from props */}
+                            <button className="neon-button">Add to Cart</button> {/* Use addToCart from props */}
                 </div>
               </div>
             ))}
