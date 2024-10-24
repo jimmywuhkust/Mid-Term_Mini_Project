@@ -1,15 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './User.css';
+import { UserContext } from './UserContext';  // Import UserContext
 
 const User = () => {
-  const [userInfo, setUserInfo] = useState({
-    name: 'John Doe',
-    email: 'john.doe@example.com',
-    address: '123 Main St, Springfield',
-    phone: '+1 555-555-5555',
-    preferences: 'No preferences'
-  });
-
+  const { userInfo, setUserInfo } = useContext(UserContext);  // Access the user context
   const [isEditing, setIsEditing] = useState(false);
 
   const handleChange = (e) => {
@@ -27,7 +21,6 @@ const User = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsEditing(false);
-    // Logic to save the updated user info can be added here
   };
 
   return (

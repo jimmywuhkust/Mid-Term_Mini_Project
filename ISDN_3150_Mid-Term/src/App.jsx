@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './App.css';
 import Splash from './Splash';
 import BrandPage from './BrandPage';
@@ -8,6 +8,8 @@ import User from './User'; // Import the User component
 import AINoticePage from './AINoticePage'; // Import the AI Notice Page
 import AIChatPage from './AIChatPage'; // Import AI Chat Page
 import { products } from './Products'; // Import products from ProductPage
+import { UserProvider, UserContext } from './UserContext';  // Import the UserProvider and UserContext
+
 
 const App = () => {
   const [layout, setLayout] = useState(['header', 'main', 'footer']);
@@ -64,11 +66,13 @@ const App = () => {
   }
 
   return (
-    <div className="app">
-      {layout.map((section) => (
-        <div key={section}>{components[section]}</div>
-      ))}
-    </div>
+    <UserProvider>
+      <div className="app">
+        {layout.map((section) => (
+          <div key={section}>{components[section]}</div>
+        ))}
+      </div>
+    </UserProvider>
   );
 };
 
@@ -101,26 +105,30 @@ const Header = () => (
   </div>
 );
 
-const Main = ({ addToCart }) => (
-  <div className="main">
-    <h1 className="neon-text">Welcome, Shalini!</h1>
-    <h2 className="neon-text">Recommended for you</h2>
-    <div className="product-list">
-      {products.slice(0, 3).map((product, index) => (  // Show 3 recommended products
-        <div className="product" key={index} style={{ display: 'flex', justifyContent: 'space-between'}}>
-            <img src={product.thumbnail} alt={product.name} />
-            <div>
-              <p>{product.name}</p>
-              <p>${product.price.toFixed(2)}</p>
+const Main = ({ addToCart }) => {
+  const { userInfo } = useContext(UserContext);  // Access the user context
+
+  return (
+    <div className="main">
+      <h1 className="neon-text">Welcome, {userInfo.name}!</h1>  {/* Use the user's name */}
+      <h2 className="neon-text">Recommended for you</h2>
+      <div className="product-list">
+        {products.slice(0, 3).map((product, index) => (  // Show 3 recommended products
+          <div className="product" key={index} style={{ display: 'flex', justifyContent: 'space-between'}}>
+              <img src={product.thumbnail} alt={product.name} />
+              <div>
+                <p>{product.name}</p>
+                <p>${product.price.toFixed(2)}</p>
+              </div>
+            <div className="button-container">
+              <button onClick={() => addToCart(product)}>Add to Cart</button> {/* Add to Cart button */}
             </div>
-          <div className="button-container">
-            <button onClick={() => addToCart(product)}>Add to Cart</button> {/* Add to Cart button */}
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const Footer = ({ setCurrentView, cartItems }) => {
   const cartItemCount = cartItems.length;
