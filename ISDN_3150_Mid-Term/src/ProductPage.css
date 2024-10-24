@@ -179,3 +179,51 @@
 .product-right button {
     margin-bottom: 10px;
 }
+
+.popup-text-window {
+    position: relative;
+    padding-top: 7%;
+    bottom: 20px;
+    z-index: 9999; /* Ensure it's on top */
+    display: flex;
+    flex-direction: row; /* Change to row to place elements in the same line */
+    align-items: center; /* Align items vertically in the center */
+}
+.popup-text-window {
+    position: relative;
+    padding-top: 7%;
+    bottom: 20px;
+    z-index: 9999; /* Ensure it's on top */
+    display: flex;
+    flex-direction: row; /* Change to column to place elements vertically */
+    align-items: center; /* Align items horizontally in the center */
+}
+
+.popup-text-window textarea {
+    width: 70%;
+    height: 15%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    resize: none;
+    box-sizing: border-box;
+    margin-bottom: 10px; /* Add margin to separate from the button */
+}
+
+.send-button {
+    width: auto; /* Adjust width to fit content */
+    height: 15%;
+    padding: 10px 20px; /* Adjust padding for better appearance */
+    background-color: #db7ddb; /* Neon pink background color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.send-button:hover {
+    background-color: #e600e6; /* Slightly darker neon pink on hover */
+}

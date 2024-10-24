@@ -46,7 +46,7 @@ const ProductPage = ({ addToCart }) => {
         <div className="product-detail">
           <div className="product-content">
             <div className="product-creator">
-              <p>{selectedProduct.creator}</p>
+              <p>Creator: {selectedProduct.creator}</p>
             </div>
             <h1>{selectedProduct.name}</h1>
             <div className="product-tagline">
@@ -61,47 +61,49 @@ const ProductPage = ({ addToCart }) => {
             <div className="Blank_Space">
             </div>
             <div className="product-3dmodel">
-              {/* 3D Model Viewer */}
-              <Canvas>
-                <Suspense fallback={null}>
-                  <ambientLight intensity={0.7} />
-                  <directionalLight position={[0, 5, 5]} intensity={1} />
-                  <ModelViewer modelPath={selectedProduct.threeDModel} autoRotate={autoRotate} />
-                  <OrbitControls 
-                    enableZoom={true} 
-                    autoRotate={autoRotate} 
-                    autoRotateSpeed={1} 
-                    onStart={() => setAutoRotate(false)} 
-                    onEnd={() => setAutoRotate(false)} 
-                  />
-                </Suspense>
-              </Canvas>
-            </div>
-            <div className="product-main">
-              <div className="product-left">
-                <p>Price: ${typeof selectedProduct.price === 'number' ? selectedProduct.price.toFixed(2) : 'N/A'}</p>
-                <button className="neon-button">Buy Now</button>
-                <button className="neon-button" onClick={() => addToCart(selectedProduct)}>Add to Cart</button>
-                </div>
-                <div className="product-right">
-                  <p>Review: {selectedProduct.review}</p>
-                  <img src="How_can_I_help_you.png" alt="Chat with AI" style={{ width: '10vh' }} />
-                </div>
-                </div>
-                </div>
-                </div>
-                ) : (
-                <div className="product-page">
-                  <div className="product-list">
-                    {products.map((product, index) => (
-                      <div key={index} className="product">
-                        <div className="product-thumbnail" onClick={() => handleProductClick(product)}>
-                          <img src={product.thumbnail} alt={product.name} />
-                        </div>
-                        <div className="product-info">
-                          <h3>{product.name}</h3>
-                          <p>${typeof product.price === 'number' ? product.price.toFixed(2) : 'N/A'}</p>
-                          <button className="neon-button" onClick={() => addToCart(product)}>Add to Cart</button> {/* Use addToCart from props */}
+                      <Canvas>
+                      <Suspense fallback={null}>
+                        <ambientLight intensity={0.7} />
+                        <directionalLight position={[0, 5, 5]} intensity={1} />
+                        <ModelViewer modelPath={selectedProduct.threeDModel} autoRotate={autoRotate} />
+                        <OrbitControls 
+                        enableZoom={true} 
+                        autoRotate={autoRotate} 
+                        autoRotateSpeed={1} 
+                        onStart={() => setAutoRotate(false)} 
+                        onEnd={() => setAutoRotate(false)} 
+                        />
+                      </Suspense>
+                      </Canvas>
+                    </div>
+                    <div className="product-main">
+                      <div className="product-left">
+                      <p>Price: ${typeof selectedProduct.price === 'number' ? selectedProduct.price.toFixed(2) : 'N/A'}</p>
+                      <button className="neon-button">Buy Now</button>
+                      <button className="neon-button" onClick={() => addToCart(selectedProduct)}>Add to Cart</button>
+                      </div>
+                      <div className="product-right">
+                        <p>Review: {selectedProduct.review}</p>
+                      </div>
+                      </div>
+                      <div className="popup-text-window">
+                        <textarea placeholder="Type your message here..."></textarea>
+                        <button className="send-button">Send</button>
+                      </div>
+                      </div>
+                      </div>
+                      ) : (
+                      <div className="product-page">
+                        <div className="product-list">
+                        {products.map((product, index) => (
+                          <div key={index} className="product">
+                          <div className="product-thumbnail" onClick={() => handleProductClick(product)}>
+                            <img src={product.thumbnail} alt={product.name} />
+                          </div>
+                          <div className="product-info">
+                            <h3 onClick={() => handleProductClick(product)}>{product.name}</h3>
+                            <p>${typeof product.price === 'number' ? product.price.toFixed(2) : 'N/A'}</p>
+                            <button className="neon-button" onClick={() => addToCart(product)}>Add to Cart</button> {/* Use addToCart from props */}
                 </div>
               </div>
             ))}
@@ -166,9 +168,9 @@ export const products = [
     price: 55.00,
     rating: 5.0,
     creator: 'Chan Ho, Echo',
-    Tagline: 'Ace your exams with style!',
-    description: 'Description of Product E',
-    stock: 0,
+    Tagline: "Expand your brain’s storage",
+    description: 'Introducing NeuroDrive, the cutting-edge device designed for students who aspire to transcend traditional learning methods. With its innovative brain-machine interface, NeuroDrive seamlessly connects your mind to a vast, high-speed storage system filled with encyclopedic knowledge.',
+    stock: 4,
     review: 'Review of Product E',
     thumbnail: 'product/NeruoDrive.png',
     threeDModel: 'product/NeuroDrive.glb'
