@@ -21,7 +21,7 @@ const ModelViewer = ({ modelPath, autoRotate }) => {
   useFrame(() => {
     const scaleValue = animatedScale.get();
     scene.scale.set(scaleValue, scaleValue, scaleValue);
-    scene.position.y = 1 * (1 - scaleValue / 3); // Move up by 1.5 units
+    scene.position.y = 0.7 * (1 - scaleValue / 3); // Move up by 0.7 units
   });
 
   return <primitive object={scene} />;
@@ -117,7 +117,7 @@ export const products = [
     name: 'ClearGaze X',
     price: 15.00,
     rating: 4.5,
-    creator: 'Shadow',
+    creator: 'Chan Ying Tung, Shadow',
     Tagline: 'Erase others’ answers, Ace your exams!',
     description: 'Ace your exams with style! ClearGaze X is the ultimate smart glasses designed to help you stay ahead of the competition. Equipped with an invisible laser, these glasses can erase answers on others’ exam papers—so you can boost your marks without anyone knowing!',
     stock: 10,
@@ -129,9 +129,9 @@ export const products = [
     name: 'HoloWand',
     price: 25.00,
     rating: 4.0,
-    creator: 'Creator B',
-    Tagline: 'Ace your exams with style!',
-    description: 'Description of Product B',
+    creator: 'KANDASAMY, Shalini',
+    Tagline: "Be Present, Even When You're Not!",
+    description: 'The Holo Wand is your ultimate academic companion, empowering you to attend classes virtually while managing your real-world commitments. With its advanced holographic technology, you can project a lifelike avatar, engage in discussions, and earn those attendance points—all from the comfort of your own space. Embrace the future of learning with Holo Wand!',
     stock: 5,
     review: 'Review of Product B',
     thumbnail: 'product/Hologram.png',
@@ -141,9 +141,9 @@ export const products = [
     name: 'SkillShake',
     price: 35.00,
     rating: 3.5,
-    creator: 'Creator C',
-    Tagline: 'Ace your exams with style!',
-    description: 'Description of Product C',
+    creator: 'KATYAYAN, Saanvi Ravi',
+    Tagline: 'Blend new skills, sip your success!',
+    description: "Elevate your career prospects with SkillShake, the innovative product that revolutionizes skill acquisition. Simply scan the job application requirements using the built-in camera, then blend your favorite ingredients into a delicious milkshake. Once you drink it, you'll instantly access the skills you need to stand out as if you have been practicing these skills for years!",
     stock: 8,
     review: 'Review of Product C',
     thumbnail: 'product/Shake.png',
@@ -153,9 +153,9 @@ export const products = [
     name: 'DreamWeaver',
     price: 45.00,
     rating: 4.8,
-    creator: 'Creator D',
-    Tagline: 'Ace your exams with style!',
-    description: 'Description of Product D',
+    creator: 'Wu Chun Ming, Jimmy',
+    Tagline: 'Study while you dream, wake up smarter.',
+    description: 'The Dream Weaver is a groundbreaking sleep-study tool that turns your downtime into productive hours. Leveraging advanced neuro-audio technology, it optimizes your brain’s natural learning processes during sleep, making cramming for exams or absorbing new information effortless. Simply wear the Dream Weaver headband before bed, and wake up feeling more prepared and refreshed.',
     stock: 2,
     review: 'Review of Product D',
     thumbnail: 'product/Dream_Weaver.png',
@@ -165,7 +165,7 @@ export const products = [
     name: 'NeruoDrive',
     price: 55.00,
     rating: 5.0,
-    creator: 'Creator E',
+    creator: 'Chan Ho, Echo',
     Tagline: 'Ace your exams with style!',
     description: 'Description of Product E',
     stock: 0,
