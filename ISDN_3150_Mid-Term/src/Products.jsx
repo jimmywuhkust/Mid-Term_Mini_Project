@@ -87,7 +87,7 @@ const ProductPage = ({ addToCart }) => {
                       </div>
                       </div>
                       <div className="popup-text-window">
-                        <textarea placeholder="Type your message here..."></textarea>
+                        <textarea placeholder="Ask the LLM to rotate the object for you!"></textarea>
                         <button className="send-button">Send</button>
                       </div>
                       </div>
