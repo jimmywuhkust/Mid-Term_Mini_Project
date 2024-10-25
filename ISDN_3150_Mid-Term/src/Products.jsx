@@ -103,7 +103,7 @@ const ProductPage = ({ addToCart }) => {
                           <div className="product-info">
                             <h3 onClick={() => handleProductClick(product)}>{product.name}</h3>
                             <p>${typeof product.price === 'number' ? product.price.toFixed(2) : 'N/A'}</p>
-                            <button className="neon-button">Add to Cart</button> {/* Use addToCart from props */}
+                            <button className="neon-button" onClick={() => addToCart(product)}>Add to Cart</button> {/* Use addToCart from props */}
                 </div>
               </div>
             ))}
